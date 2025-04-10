@@ -1,0 +1,50 @@
+﻿@model Hospitel_Project.Models.Doctor
+
+@{
+    ViewData["Title"] = "Edit Doctor";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-primary text-white text-center rounded-top-4">
+            <h2 class="mb-0">✏️ Edit Doctor</h2>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                <div class="mb-3">
+                    <label asp-for="DoctorId" class="form-label fw-bold text-muted">Doctor ID</label>
+                    <input asp-for="DoctorId" class="form-control shadow-sm" readonly />
+                    <span asp-validation-for="DoctorId" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label fw-bold text-muted">Name</label>
+                    <input asp-for="Name" class="form-control shadow-sm" />
+                    <span asp-validation-for="Name" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Specialty" class="form-label fw-bold text-muted">Specialty</label>
+                    <input asp-for="Specialty" class="form-control shadow-sm" />
+                    <span asp-validation-for="Specialty" class="text-danger small"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label fw-bold text-muted">Email</label>
+                    <input asp-for="Email" class="form-control shadow-sm" />
+                    <span asp-validation-for="Email" class="text-danger small"></span>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-success btn-lg px-4 shadow-sm">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary btn-lg px-4 ms-2 shadow-sm">
+                        <i class="fas fa-arrow-left"></i> Back to List
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

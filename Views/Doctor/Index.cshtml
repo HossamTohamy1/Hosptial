@@ -1,0 +1,76 @@
+﻿@model List<Hospitel_Project.Models.Doctor>
+
+@{
+    ViewData["Title"] = "Doctors List";
+}
+<h1>Doctors List</h1>
+<p>List of doctors will be displayed here.</p>
+
+<div class="container mt-5">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h2 style="background-color: #0d6efd; color: white; padding: 5px 10px; border-radius: 5px;">Doctors List</h2>
+        <div class="text-center">
+            <a asp-action="Create" class="btn btn-outline-success btn-lg px-4">Create Doctor</a>
+        </div>
+    </div>
+        
+        <div class="card-body">
+            <table class="table table-hover text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Specialty</th>
+                         <th>Email</th>
+                        <th>Actions</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var doctor in Model)
+                    {
+                        <tr>
+                            <td>@doctor.Name</td>
+                            <td>@doctor.Specialty</td>
+                            <td>@doctor.Email</td>
+                            <td>
+                                 <a asp-action="Edit" asp-route-id="@doctor.DoctorId" class="btn btn-outline-warning w-25"> Edit</a>
+                                <a asp-action="Delete" asp-route-id="@doctor.DoctorId" class="btn btn-outline-danger w-25"> Delete</a>
+                                <!-- Button trigger modal -->
+                                @* <button type="button" class="btn btn-outline-warning w-25" data-bs-toggle="modal" data-bs-target="#editModal"> *@
+                                @*     Edit *@
+                                @* </button> *@
+                                @* <button type="button" class="btn btn-outline-danger w-25" data-bs-toggle="modal" data-bs-target="#deleteModal"> *@
+                                @*     Delete *@
+                                @* </button> *@
+
+                                <!-- Modal -->
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+           
+
+            <div class="modal fade" id="actionModal" tabindex="-1" aria-labelledby="actionModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="actionModalLabel">Action</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p id="actionMessage"></p>
+                            <form id="actionForm">
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="confirmAction">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

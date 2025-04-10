@@ -1,0 +1,48 @@
+﻿@model Hospitel_Project.Models.Diagnosis
+
+@{
+    ViewData["Title"] = "Delete Diagnosis";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-header bg-danger text-white">
+            <h3 class="mb-0">Delete Diagnosis</h3>
+        </div>
+        <div class="card-body">
+            <h5 class="text-danger">Are you sure you want to delete this diagnosis?</h5>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3 fw-bold">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-3 fw-bold">
+                    @Html.DisplayNameFor(model => model.Comments)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Comments)
+                </dd>
+                <dt class="col-sm-3 fw-bold">
+                    @Html.DisplayNameFor(model => model.Patient)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Patient.FirstName)
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer text-end">
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="DiagnoseId" />
+                <button type="submit" class="btn btn-danger">
+                    <i class="bi bi-trash"></i> Delete
+                </button>
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Back to List
+                </a>
+            </form>
+        </div>
+    </div>
+</div>

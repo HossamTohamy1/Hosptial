@@ -1,0 +1,38 @@
+﻿@model Hospitel_Project.Models.Prescription
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">Prescription Details</h2>
+
+    <div class="card shadow-sm mt-4">
+        <div class="card-header bg-primary text-white">
+            <h4>Prescription Information</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4 font-weight-bold">Date Prescribed:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.DatePrescribed)</dd>
+
+                <dt class="col-sm-4 font-weight-bold">Quantity:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Quantity)</dd>
+
+                <dt class="col-sm-4 font-weight-bold">Description:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.description)</dd>
+
+                <dt class="col-sm-4 font-weight-bold">Patient Name:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Patient.FirstName) @Html.DisplayFor(model => model.Patient.LastName)</dd>
+
+                <dt class="col-sm-4 font-weight-bold">Medicament:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Medicament.Name)</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="mt-4 text-center">
+       
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

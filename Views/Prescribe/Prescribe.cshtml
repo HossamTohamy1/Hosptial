@@ -1,0 +1,36 @@
+﻿<form asp-action="Prescribe" method="post" class="p-4 bg-light rounded shadow-sm">
+    <div class="mb-3">
+        <label for="patientId" class="form-label fw-bold">Patient:</label>
+        <select name="patientId" class="form-select">
+            @foreach (var patient in ViewBag.Patients)
+            {
+                <option value="@patient.PatientId">@patient.FirstName @patient.LastName</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="medicamentId" class="form-label fw-bold">Medicament:</label>
+        <select name="medicamentId" class="form-select">
+            @foreach (var med in ViewBag.Medicaments)
+            {
+                <option value="@med.MedicamentId">@med.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="quantity" class="form-label fw-bold">Quantity:</label>
+        <input type="number" name="quantity" class="form-control" min="1" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="description" class="form-label fw-bold">Description:</label>
+        <textarea name="description" class="form-control border-primary shadow-sm" rows="4" placeholder="Enter description..."></textarea>
+    </div>
+
+   
+    <button  type="submit" class="btn btn-primary w-100">
+        <i class="bi bi-plus-circle"></i> Prescribe
+    </button>
+</form>

@@ -1,0 +1,44 @@
+﻿@model List<Patient>
+@{
+    ViewData["Title"] = "Patients List";
+}
+
+<h1>Index</h1>
+
+<h2>Patients List</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Diagnosis</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var patient in Model)
+            {
+                <tr>
+                    <td>@patient.PatientId</td>
+                    <td>@patient.FirstName</td>
+                    <td>@patient.LastName</td>
+                    <td>@patient.Address</td>
+                 
+                    <td>
+                        <a asp-action="Details" asp-route-id="@patient.PatientId" class="btn btn-info">View</a>
+                        <a asp-action="Edit" asp-route-id="@patient.PatientId" class="btn btn-warning">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@patient.PatientId" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No patients found.</p>
+}

@@ -1,0 +1,117 @@
+﻿@using System.Security.Claims
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Hospitel_Project</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <ul class="navbar-nav flex-grow-1">
+                                @switch (User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.Role)?.Value)
+                                {
+                                    case "Admin":
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Doctor" asp-action="Index">Doctor</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="AddRole">Add Role</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="ManageUsers">Promote Admin</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="ManageAdmins">Demote Admin</a>
+                                        </li>
+                                       
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Patients" asp-action="index">Patients</a>
+                                        </li>
+
+                                        break;
+
+                                    case "Doctor":
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Prescribe" asp-action="Index">Prescribe</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Patients" asp-action="Index">Patients</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Medicaments" asp-action="Index">Medicaments</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Diagnoses" asp-action="Index">Diagnoses</a>
+                                        </li>
+                                        break;
+
+                                    case "Patient":
+
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Prescribe" asp-action="Index">Prescribe Details</a>
+                                        </li>
+                                        @if (Model is IEnumerable<Hospitel_Project.Models.Prescription> prescriptions && prescriptions.Any())
+                                        {
+                                            var firstPrescription = prescriptions.FirstOrDefault();
+                                            if (firstPrescription != null)
+                                            {
+                                                <li class="nav-item">
+                                                    <a class="nav-link text-dark" asp-area="" asp-controller="Prescribe" asp-action="Details" asp-route-id="@firstPrescription.PatientId">Details</a>
+                                                </li>
+                                            }
+                                        }
+                                        
+                   
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Diagnoses" asp-action="Index" asp-route-id="">Diagnoses Details</a>
+                                        </li>
+                                        
+                                        break;
+                                }
+                            </ul>
+
+                            
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Logout</a>
+                                </li>
+                            </ul>
+                        }
+                        else
+                        {
+                            
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Register</a>
+                                </li>
+                            </ul>
+                        }
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+</body>
+</html>

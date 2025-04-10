@@ -1,0 +1,37 @@
+﻿@model Hospitel_Project.Models.Medicament
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container mt-4">
+    <h1 class="text-primary">Medicament Details</h1>
+
+    <div class="card shadow-sm p-4">
+        <h4 class="text-secondary">Medicament Information</h4>
+        <hr />
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <strong>@Html.DisplayNameFor(model => model.Name):</strong>
+                <span class="text-muted">@Html.DisplayFor(model => model.Name)</span>
+            </li>
+            <li class="list-group-item">
+                <strong>@Html.DisplayNameFor(model => model.TimeOfdosage):</strong>
+                <span class="text-muted">@Html.DisplayFor(model => model.TimeOfdosage)</span>
+            </li>
+            <li class="list-group-item">
+                <strong>@Html.DisplayNameFor(model => model.price):</strong>
+                <span class="text-muted">@Html.DisplayFor(model => model.price) EGP</span>
+            </li>
+            <li class="list-group-item">
+                <strong>@Html.DisplayNameFor(model => model.stock):</strong>
+                <span class="text-muted">@Html.DisplayFor(model => model.stock)</span>
+            </li>
+        </ul>
+
+        <div class="mt-3 d-flex justify-content-between">
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            <a asp-action="Edit" asp-route-id="@Model?.MedicamentId" class="btn btn-primary">Edit</a>
+        </div>
+    </div>
+</div>

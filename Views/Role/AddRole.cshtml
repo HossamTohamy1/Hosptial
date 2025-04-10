@@ -1,0 +1,36 @@
+﻿@model Hospitel_Project.Models.RoleViewModel
+@{
+    ViewData["Title"] = "Add Role";
+}
+
+<h1 class="text-center mt-3">Add Role</h1>
+
+<hr />
+
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow p-4">
+            <form asp-action="SaveRole">
+                <div asp-validation-summary="All" class="alert alert-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="RoleName" class="form-label fw-bold"></label>
+                    <input asp-for="RoleName" class="form-control" placeholder="Enter role name" />
+                    <span asp-validation-for="RoleName" class="text-danger"></span>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

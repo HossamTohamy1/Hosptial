@@ -1,0 +1,56 @@
+﻿@model Hospitel_Project.Models.Patient
+
+@{
+    ViewData["Title"] = "Patient Details";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-primary mb-3">Patient Details</h2>
+        <hr />
+
+        <dl class="row">
+            <dt class="col-sm-3 fw-bold"> @Html.DisplayNameFor(model => model.FirstName) </dt>
+            <dd class="col-sm-9"> @Html.DisplayFor(model => model.FirstName) </dd>
+
+            <dt class="col-sm-3 fw-bold"> @Html.DisplayNameFor(model => model.LastName) </dt>
+            <dd class="col-sm-9"> @Html.DisplayFor(model => model.LastName) </dd>
+
+            <dt class="col-sm-3 fw-bold"> @Html.DisplayNameFor(model => model.Address) </dt>
+            <dd class="col-sm-9"> @Html.DisplayFor(model => model.Address) </dd>
+
+            <dt class="col-sm-3 fw-bold"> @Html.DisplayNameFor(model => model.Email) </dt>
+            <dd class="col-sm-9"> @Html.DisplayFor(model => model.Email) </dd>
+
+            <dt class="col-sm-3 fw-bold"> @Html.DisplayNameFor(model => model.HasInsurance) </dt>
+            <dd class="col-sm-9">
+                @if (Model.HasInsurance)
+                {
+                    <span class="badge bg-success">Yes</span>
+                }
+                else
+                {
+                    <span class="badge bg-danger">No</span>
+                }
+            </dd>
+
+            <dt class="col-sm-3 fw-bold"> @Html.DisplayNameFor(model => model.AssignedDoctor) </dt>
+            <dd class="col-sm-9"> @Html.DisplayFor(model => model.AssignedDoctor.Name) </dd>
+        </dl>
+
+        <div class="d-flex justify-content-between mt-4">
+            <a asp-action="Edit" asp-route-id="@Model?.PatientId" class="btn btn-warning">
+                <i class="bi bi-pencil-square"></i> Edit
+            </a>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Back to List
+            </a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,46 @@
+﻿@model Hospitel_Project.Models.Diagnosis
+
+@{
+    ViewData["Title"] = "Diagnosis Details";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Diagnosis Details</h3>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3 fw-bold">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-3 fw-bold">
+                    @Html.DisplayNameFor(model => model.Comments)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Comments)
+                </dd>
+                <dt class="col-sm-3 fw-bold">
+                    @Html.DisplayNameFor(model => model.Patient)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Patient.FirstName)
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer text-end">
+            @if (!User.IsInRole("Patient"))
+            {
+                <a asp-action="Edit" asp-route-id="@Model?.DiagnoseId" class="btn btn-warning">
+                    <i class="bi bi-pencil"></i> Edit
+                </a>
+            }
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Back to List
+            </a>
+        </div>
+    </div>
+</div>

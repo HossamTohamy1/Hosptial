@@ -1,0 +1,51 @@
+﻿@model Hospitel_Project.Models.Medicament
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container mt-4">
+    <h1 class="text-primary">Create Medicament</h1>
+
+    <div class="card shadow-sm p-4">
+        <h4 class="mb-3">Medicament Details</h4>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label fw-bold"></label>
+                <input asp-for="Name" class="form-control" placeholder="Enter medicament name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="TimeOfdosage" class="form-label fw-bold"></label>
+                <input asp-for="TimeOfdosage" class="form-control" placeholder="Enter dosage time" />
+                <span asp-validation-for="TimeOfdosage" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="price" class="form-label fw-bold"></label>
+                <input asp-for="price" type="number" step="0.01" class="form-control" placeholder="Enter price" />
+                <span asp-validation-for="price" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="stock" class="form-label fw-bold"></label>
+                <input asp-for="stock" type="number" class="form-control" placeholder="Enter stock quantity" />
+                <span asp-validation-for="stock" class="text-danger"></span>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

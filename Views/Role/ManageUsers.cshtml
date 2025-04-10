@@ -1,0 +1,40 @@
+﻿@model List<ApplicationUser>
+@{
+    ViewData["Title"] = "ManageUsers";
+}
+
+<h1>ManageUsers</h1>
+
+<table class="table table-striped table-bordered mt-3">
+    <thead class="table-dark">
+        <tr>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {                                       
+            <tr>
+                <td>@user.Email</td>
+                <td>
+                    <a asp-controller="Role" asp-action="PromoteToAdmin" asp-route-userId="@user.Id" class="btn btn-outline-success btn-sm">
+                        Promote to Admin
+                    </a>
+                    <form asp-controller="Role" asp-action="AssignRole" method="post" class="d-inline">
+                        <input type="hidden" name="userId" value="@user.Id" />
+                        <button type="submit" name="role" value="Doctor" class="btn btn-outline-primary btn-sm">
+                            promote as Doctor
+                        </button>
+                    </form>
+                    <form asp-controller="Role" asp-action="AssignRole" method="post" class="d-inline">
+                        <input type="hidden" name="userId" value="@user.Id" />
+                        <button type="submit" name="role" value="Patient" class="btn btn-outline-secondary btn-sm">
+                            Assign as Patient
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

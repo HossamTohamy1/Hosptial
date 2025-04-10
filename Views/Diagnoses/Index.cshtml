@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Hospitel_Project.Models.Diagnosis>
+
+@{
+    ViewData["Title"] = "Diagnosis List";
+}
+
+<h1 class="mb-4 text-primary">Diagnosis List</h1>
+
+<div class="mb-3">
+    @if (!User.IsInRole("Patient"))
+    {
+        <a asp-action="Create" class="btn btn-primary">+ Create New</a>
+    }
+</div>
+
+<div class="card shadow-sm p-3">
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
+                <tr class="text-center">
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Comments)</th>
+                    <th>Patient Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    // جلب PatientId الخاص بالمستخدم الحالي
+                    var currentPatientId = User.FindFirst("PatientId")?.Value;
+                }
+
+                @foreach (var item in Model)
+                {
+                    <tr class="text-center">
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Comments)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Patient.FirstName)</td>
+                        <td>
+                            @if (User.IsInRole("Patient") && currentPatientId == item.PatientId.ToString())
+                            {
+                                <a asp-action="Details" asp-route-id="@item.DiagnoseId" class="btn btn-outline-info btn-sm">Details</a>
+                            }
+                            else if (!User.IsInRole("Patient"))
+                            {
+                                <a asp-action="Edit" asp-route-id="@item.DiagnoseId" class="btn btn-outline-warning btn-sm">Edit</a>
+                                <a asp-action="Details" asp-route-id="@item.DiagnoseId" class="btn btn-outline-info btn-sm">Details</a>
+                                <a asp-action="Delete" asp-route-id="@item.DiagnoseId" class="btn btn-outline-danger btn-sm">Delete</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

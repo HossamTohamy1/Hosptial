@@ -1,0 +1,48 @@
+﻿@model Hospitel_Project.Models.Diagnosis
+
+@{
+    ViewData["Title"] = "Create Diagnosis";
+}
+
+<h1 class="mb-4 text-primary">Create Diagnosis</h1>
+
+<div class="card shadow-sm p-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label fw-bold"></label>
+                    <input asp-for="Name" class="form-control" placeholder="Enter diagnosis name" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Comments" class="form-label fw-bold"></label>
+                    <textarea asp-for="Comments" class="form-control" rows="3" placeholder="Enter comments"></textarea>
+                    <span asp-validation-for="Comments" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PatientId" class="form-label fw-bold"></label>
+                    <select asp-for="PatientId" class="form-select" asp-items="ViewBag.PatientId">
+                        <option disabled selected>-- Select a Patient --</option>
+                    </select>
+                    <span asp-validation-for="PatientId" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

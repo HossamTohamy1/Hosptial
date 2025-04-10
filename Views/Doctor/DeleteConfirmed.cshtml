@@ -1,0 +1,12 @@
+﻿@model Doctor
+@{
+    ViewData["Title"] = "DeleteConfirmed";
+}
+
+<h1>DeleteConfirmed</h1>
+
+<form asp-action="DeleteConfirmed" asp-route-id="@Model.DoctorId" method="post">
+    <input type="hidden" asp-for="DoctorId" />
+    <button type="submit" class="btn btn-danger btn-lg px-4">DeleteConfirmed</button>
+    <a asp-action="Index" class="btn btn-secondary btn-lg px-4 ms-2">Cancel</a>
+</form>

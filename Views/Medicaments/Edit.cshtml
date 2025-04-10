@@ -1,0 +1,64 @@
+﻿@model Hospitel_Project.Models.Medicament
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container mt-4">
+    <h1 class="text-primary">Edit Medicament</h1>
+
+    <div class="card shadow-sm p-4">
+        <h4 class="text-secondary">Medicament Details</h4>
+        <hr />
+
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+            <input type="hidden" asp-for="MedicamentId" />
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label fw-bold"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label asp-for="TimeOfdosage" class="form-label fw-bold"></label>
+                        <input asp-for="TimeOfdosage" class="form-control" />
+                        <span asp-validation-for="TimeOfdosage" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label asp-for="price" class="form-label fw-bold"></label>
+                        <input asp-for="price" type="number" class="form-control" />
+                        <span asp-validation-for="price" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label asp-for="stock" class="form-label fw-bold"></label>
+                        <input asp-for="stock" type="number" class="form-control" />
+                        <span asp-validation-for="stock" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-3">
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Hospitel_Project.Models.Prescription>
+
+@{
+    ViewData["Title"] = "Prescriptions";
+}
+
+<div class="card-header d-flex justify-content-between align-items-center">
+    <h2 style="background-color: #0d6efd; color: white; padding: 5px 10px; border-radius: 5px;">Prescriptions</h2>
+
+    @if (!User.IsInRole("Patient")) 
+    {
+        <div class="text-center">
+            <a asp-action="Prescribe" class="btn btn-outline-success btn-lg px-4">Create Prescript</a>
+        </div>
+    }
+</div>
+
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Patient</th>
+            <th>Medicament</th>
+            <th>Quantity</th>
+            <th>Date Prescribed</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Patient.FirstName @item.Patient.LastName</td>
+                <td>@item.Medicament.Name</td>
+                <td>@item.Quantity</td>
+                <td>@item.DatePrescribed.ToShortDateString()</td>
+                <td>@item.description</td>
+                <td>
+                    <a class="btn btn-outline-primary btn-sm" asp-action="Details" asp-route-id="@item.PrescriptionId">Details</a>
+
+                    @if (!User.IsInRole("Patient")) 
+                    {
+                        <span> | </span>
+                        <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.PrescriptionId">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
