@@ -90,7 +90,6 @@ C:\Users\hossny D. monkey\source\repos\Hospitel Project\Hospitel Project\obj\Deb
 C:\Users\hossny D. monkey\source\repos\Hospitel Project\Hospitel Project\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.Hospitel Project.props
 C:\Users\hossny D. monkey\source\repos\Hospitel Project\Hospitel Project\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.Hospitel Project.props
 C:\Users\hossny D. monkey\source\repos\Hospitel Project\Hospitel Project\obj\Debug\net9.0\staticwebassets.pack.json
-C:\Users\hossny D. monkey\source\repos\Hospitel Project\Hospitel Project\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\hossny D. monkey\source\repos\Hospitel Project\Hospitel Project\obj\Debug\net9.0\Hospitel Project.dll
 C:\Users\hossny D. monkey\source\repos\Hospitel Project\Hospitel Project\obj\Debug\net9.0\refint\Hospitel Project.dll
 C:\Users\hossny D. monkey\source\repos\Hospitel Project\Hospitel Project\obj\Debug\net9.0\Hospitel Project.pdb
@@ -346,3 +345,5 @@ C:\Users\hossny D. monkey\source\repos\Hospitel Project\Hospitel Project\bin\Deb
 C:\Users\hossny D. monkey\source\repos\Hospitel Project\Hospitel Project\bin\Debug\net9.0\MailKit.dll
 C:\Users\hossny D. monkey\source\repos\Hospitel Project\Hospitel Project\bin\Debug\net9.0\MimeKit.dll
 C:\Users\hossny D. monkey\source\repos\Hospitel Project\Hospitel Project\obj\Debug\net9.0\compressed\1durd39tvy-pwjozrg0dp.gz
+C:\Users\hossny D. monkey\source\repos\Hospitel Project\Hospitel Project\obj\Debug\net9.0\Hospitel Project.sourcelink.json
+C:\Users\hossny D. monkey\source\repos\Hospitel Project\Hospitel Project\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

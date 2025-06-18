@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Hospitel Project")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+660f85116d43b393384a401a2e44ae9425fd06ef")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hospitel Project")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hospitel Project")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
