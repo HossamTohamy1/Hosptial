@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\Hospitel Project.props" />
-</Project>
