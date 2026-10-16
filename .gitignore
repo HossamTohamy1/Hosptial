@@ -2,7 +2,6 @@ config.bat
 node_modules
 
 # --- cleanup ---
-.vscode/
 .vs/
 bin/
 obj/
@@ -10,7 +9,5 @@ obj/
 node_modules/
 dist/
 dev-dist/
-.env
-.env.*
 !.env.example
 config.bat
